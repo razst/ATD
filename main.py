@@ -8,7 +8,6 @@ if __name__ == '__main__':
     print(my_drone.get_temp())
     my_drone.streamon()
     print("about to take off...")
-    time.sleep(30)
     my_drone.takeoff()
     my_drone.up(80)
     time.sleep(3)

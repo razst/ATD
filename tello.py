@@ -142,6 +142,11 @@ class Tello:
                 yCount = 0    
             else:
                 yCount+=1
+            if z > 240:
+                self.forward(20)
+            elif z < 200:
+                self.back(20)
+                
             #time.sleep(0.3)
             
     def streamon(self):

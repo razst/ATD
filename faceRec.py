@@ -27,6 +27,7 @@ class FaceRec:
         x,y,z = 0,0,0
         (h, w) = frame.shape[:2]
         x = (w/2) - ((right-left)/2) # cal where the center should be
+        z = (w/2) - ((right-left)/2) # cal where the center should be
         x = x - left # how far are we from the center
         if x > -110 and x < 80: # if we are close to the center, don't move
             x = 0
@@ -34,7 +35,6 @@ class FaceRec:
         y = y - top # how far are we from the center
         if y > -70 and y < 60: # if we are close to the center, don't move
            y = 0
-        z = y           
         try:
             if ((x!=0 or y != 0) and self.moveCmdQ.empty()):
                 self.moveCmdQ.put_nowait((when,x,y,z))
