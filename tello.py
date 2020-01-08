@@ -7,6 +7,8 @@ import faceRec
 import imutils
 from multiprocessing import Process, Queue
 import queue
+import winsound
+
 
 Q_SIZE = 50
 CMD_Q_SIZE = 1
@@ -120,10 +122,14 @@ class Tello:
         lastFrameTime=0
         found = False
         yCount = 3
+        i = 1
         while True:
             while self.cmdQ.empty() and not found:
                 self.right(30)
                 time.sleep(1)
+            if (i == 1):
+                winsound.PlaySound("alarm", winsound.SND_FILENAME)
+            i += 1
             found = True    
             when,x,y,z = self.cmdQ.get()            
             #print(when,x,y,z)

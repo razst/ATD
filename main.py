@@ -1,5 +1,6 @@
 import tello
 import time
+import winsound
 
 if __name__ == '__main__':
     print("starting...")

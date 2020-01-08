@@ -4,6 +4,8 @@ import numpy as np
 from multiprocessing import Process, Queue
 import time
 import queue
+import winsound
+
 #1356236087
 
 IMAGE_SHRINK_RATIO = 1 #how much to shrink the image frame, the more we shrink the more FPS we can process BUT the face must be closer to the camera!
@@ -102,9 +104,10 @@ class FaceRec:
                     #cv2.rectangle(frame, (left, bottom - 10), (right, bottom), (0, 0, 255), cv2.FILLED)
                     font = cv2.FONT_HERSHEY_DUPLEX
                     cv2.putText(frame, name, (left, bottom + 25), font, 1.0, (0, 0, 255), 1)
+          
                 else:
                     cv2.rectangle(frame, (left, top), (right, bottom), (0, 255, 0), 2)
-           
+            
             self.finalFrameQ.put((when,frame))
             
             now = time.time()
@@ -180,6 +183,4 @@ class FaceRec:
 
         p=Process(name = "finalThread", target=self.consumeFinalFrame, args=(self.finalFrameQ,))
         p.start()
-
-
 
