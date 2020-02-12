@@ -122,14 +122,14 @@ class Tello:
         lastFrameTime=0
         found = False
         yCount = 3
-        i = 1
         while True:
+            # loop until wanted is found
             while self.cmdQ.empty() and not found:
                 self.right(30)
                 time.sleep(1)
-            if (i == 1):
+            # wanted found !!
+            if (not found):
                 winsound.PlaySound("alarm", winsound.SND_FILENAME)
-            i += 1
             found = True    
             when,x,y,z = self.cmdQ.get()            
             #print(when,x,y,z)
@@ -148,9 +148,9 @@ class Tello:
                 yCount = 0    
             else:
                 yCount+=1
-            if z > 240:
+            if z <= 80:
                 self.forward(20)
-            elif z < 200:
+            elif z >= 110:
                 self.back(20)
                 
             #time.sleep(0.3)
