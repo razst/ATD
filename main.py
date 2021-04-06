@@ -10,7 +10,7 @@ if __name__ == '__main__':
     my_drone.streamon()
     print("about to take off...")
     my_drone.takeoff()
-    my_drone.up(80)
+    my_drone.up(50)
     time.sleep(3)
     #my_drone.forward(80)
     try:

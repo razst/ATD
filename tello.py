@@ -125,8 +125,9 @@ class Tello:
         while True:
             # loop until wanted is found
             while self.cmdQ.empty() and not found:
-                self.right(30)
-                time.sleep(1)
+                # self.right(30)
+                self.cw(10)
+                time.sleep(0.1)
             # wanted found !!
             if (not found):
                 winsound.PlaySound("alarm", winsound.SND_FILENAME)
